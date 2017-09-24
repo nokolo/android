@@ -33,7 +33,7 @@ public class DatabaseActivity extends SQLiteOpenHelper
     @Override
     public void onCreate (SQLiteDatabase db)
     {
-        String createTable = "CREATE TABLE"  + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, "  +
+        String createTable = "CREATE TABLE "  + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, "  +
         COL2 + " TEXT)";
         db.execSQL(createTable);
     }
