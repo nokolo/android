@@ -22,9 +22,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity
-            android:name=".ListActivity"
-            android:label="@string/title_activity_list" />
         <activity android:name=".ProjectList"></activity>
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

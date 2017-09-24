@@ -20,10 +20,11 @@ import java.util.ArrayList;
 public class ProjectList extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "ProjectList";
-    DatabaseActivity mDatabaseActivity;
+    DatabaseActivity mDatabaseActivity; // = new DatabaseActivity((getApplicationContext()));
     private ListView mListView;
     Button testBtn;
     FloatingActionButton addBtn;
+    ArrayAdapter<String> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -38,38 +39,41 @@ public class ProjectList extends AppCompatActivity implements View.OnClickListen
         testBtn.setOnClickListener(this);
         addBtn.setOnClickListener(this);
 
-        // populateListView();
+        mDatabaseActivity = new DatabaseActivity(this);
+
     }
     private void populateListView() {
         Log.d(TAG, "populateListView: Displaying data in the ListView. ");
         //append data to list
 
             Cursor cursor = mDatabaseActivity.getData();
+                ArrayList<String> listData = new ArrayList<>();
 
-            ArrayList<String> listData = new ArrayList<>();
+                int numResults = cursor.getCount();
+                Log.d(TAG, "Cursor items count - " + numResults);
 
-            int numResults = cursor.getCount();
-            if (numResults > 0) {
-                do {
-                    listData.add(cursor.getString(1));
-                } while ((cursor.moveToNext()));
+                ////////////////////////
+
+            while(cursor.moveToNext())
+            {
+                //list through rows then add the data
+                Log.d(TAG, "Item data - " + cursor.getString(0) + " | " + cursor.getString(1));
+                listData.add(cursor.getString(0));
             }
-
-            ////////////////////////
-
-      /*  while(cursor.moveToNext())
-        {
-            //list through rows then add the data
-            listData.add(cursor.getString(0));
-        }*/
-            //Create a list adapter
-            ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
-            mListView.setAdapter(adapter);
+                ////Create a list adapter
+                 adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
+                 mListView.setAdapter(adapter);
 
     }
     private void toastMessage(String message)
     {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        populateListView();
     }
 
 

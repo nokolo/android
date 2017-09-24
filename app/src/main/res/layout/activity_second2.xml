@@ -10,7 +10,7 @@
         android:id="@+id/main_test_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="read activity" />
+        android:text="@string/read_activity" />
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
