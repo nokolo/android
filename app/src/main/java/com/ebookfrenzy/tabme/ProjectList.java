@@ -21,7 +21,7 @@ public class ProjectList extends AppCompatActivity implements View.OnClickListen
 
     private static final String TAG = "ProjectList";
     DatabaseActivity mDatabaseActivity; // = new DatabaseActivity((getApplicationContext()));
-    private ListView mListView;
+    ListView mListView;
     Button testBtn;
     FloatingActionButton addBtn;
     ArrayAdapter<String> adapter;
@@ -61,8 +61,11 @@ public class ProjectList extends AppCompatActivity implements View.OnClickListen
                 listData.add(cursor.getString(0));
             }
                 ////Create a list adapter
-                 adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
-                 mListView.setAdapter(adapter);
+                 adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listData);
+                  mListView.setAdapter(adapter);
+
+
+
 
     }
     private void toastMessage(String message)
