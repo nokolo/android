@@ -30,7 +30,7 @@
         android:id="@+id/mobile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="375dp"
+        android:layout_marginBottom="374dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"

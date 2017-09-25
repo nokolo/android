@@ -7,8 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
+
+    DatabaseHelper helper = new DatabaseHelper(this);
 
     private EditText Name, Password;
     private TextView Info;
@@ -27,12 +30,31 @@ public class MainActivity extends AppCompatActivity {
         Login = (Button)findViewById(R.id.btnLogin);
         SignUp = (Button)findViewById(R.id.btnSignUp);
 
-        Info.setText("Number of attempts remaining: 5" + String.valueOf(counter));
+        Info.setText("Number of attempts remaining: " + String.valueOf(counter));
 
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 validate(Name.getText().toString(), Password.getText().toString());
+            /*    EditText a = (EditText)findViewById(R.id.etName);
+                String mob = a.getText().toString();
+                EditText b = (EditText)findViewById(R.id.etPassword);
+                String pw = b.getText().toString();
+
+                String pword = helper.searchPass(mob);
+
+                if(pw.equals(pword))
+                {
+                    Intent intent = new Intent(MainActivity.this, ProjectList.class);
+                    intent.putExtra("User", mob);
+                    startActivity(intent);
+                }
+                else
+                {
+                    Toast val = Toast.makeText(MainActivity.this, "Data don't match!" , Toast.LENGTH_SHORT);
+                    val.show();
+                }*/
+
             }
         });
         SignUp.setOnClickListener(new View.OnClickListener() {
