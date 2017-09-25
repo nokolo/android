@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListAdapter;
@@ -32,11 +33,20 @@ public class ProjectList extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_project_list);
 
         mListView = (ListView) findViewById(R.id.listView);
+      /*  mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        testBtn=(Button)findViewById(R.id.list_test_btn);
+                Intent intent = new Intent(this, TabbedActivity.class);
+                startActivity(intent);
+
+            }
+        });*/
+
+       // testBtn=(Button)findViewById(R.id.list_test_btn);
         addBtn=(FloatingActionButton)findViewById(R.id.fab);
 
-        testBtn.setOnClickListener(this);
+//        testBtn.setOnClickListener(this);
         addBtn.setOnClickListener(this);
 
         mDatabaseActivity = new DatabaseActivity(this);
@@ -61,8 +71,9 @@ public class ProjectList extends AppCompatActivity implements View.OnClickListen
                 listData.add(cursor.getString(0));
             }
                 ////Create a list adapter
-                 adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listData);
-                  mListView.setAdapter(adapter);
+               //  adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, listData);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
+                 mListView.setAdapter(adapter);
 
 
 
@@ -88,11 +99,11 @@ public class ProjectList extends AppCompatActivity implements View.OnClickListen
             Intent intent = new Intent(this, RegisterChildActivity.class);
             startActivity(intent);
         }
-        else if (v==testBtn)
+     /*   else if (v==testBtn)
         {
             Intent intent = new Intent(this, TabbedActivity.class);
             startActivity(intent);
-        }
+        }*/
     }
 
 }
