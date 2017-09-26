@@ -33,15 +33,7 @@ public class ProjectList extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_project_list);
 
         mListView = (ListView) findViewById(R.id.listView);
-      /*  mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intent = new Intent(this, TabbedActivity.class);
-                startActivity(intent);
-
-            }
-        });*/
 
        // testBtn=(Button)findViewById(R.id.list_test_btn);
         addBtn=(FloatingActionButton)findViewById(R.id.fab);
@@ -68,12 +60,24 @@ public class ProjectList extends AppCompatActivity implements View.OnClickListen
             {
                 //list through rows then add the data
                 Log.d(TAG, "Item data - " + cursor.getString(0) + " | " + cursor.getString(1));
-                listData.add(cursor.getString(0));
+                listData.add(cursor.getString(1));
             }
                 ////Create a list adapter
                //  adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1, listData);
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
                  mListView.setAdapter(adapter);
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if ( true ) {
+
+                        Intent newActivity = new Intent(ProjectList.this, TabbedActivity.class);
+                        startActivity(newActivity);
+
+                }
+
+            }
+        });
 
 
 
