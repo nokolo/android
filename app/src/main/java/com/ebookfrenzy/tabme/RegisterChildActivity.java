@@ -12,7 +12,7 @@ public class RegisterChildActivity extends AppCompatActivity {
 
     private static final String TAG = "RegisterChildActivity";
     DatabaseActivity myDBHandler;
-    private Button subbtn, btnViewData;
+    private Button subbtn, btnViewData, delData;
     private EditText name, age, mobile;
 
     @Override
@@ -20,6 +20,7 @@ public class RegisterChildActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_child);
         subbtn = (Button) findViewById(R.id.subbtn);
+        //delData = (Button) findViewById(R.id.delData);
         name = (EditText) findViewById(R.id.childname);
         age = (EditText) findViewById(R.id.age);
         mobile = (EditText) findViewById(R.id.mobile);
@@ -48,6 +49,22 @@ public class RegisterChildActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+         /*
+        delData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String newEntry = name.getText().toString();
+                if(name.length() != 0)
+                {
+                    deleteData(newEntry);
+                }
+                else
+                {
+                    toastMessage("Missing information in field");
+                }
+            }
+        });*/
+
 
     }
     public void AddData(String newEntry)
@@ -60,6 +77,16 @@ public class RegisterChildActivity extends AppCompatActivity {
             toastMessage("Oops sorry there is an issue.");
         }
     }
+   /* public void deleteData(String newEntry)
+    {
+        boolean insertData = myDBHandler.deleteData(newEntry);
+        if (insertData){
+            toastMessage("Data Successfully Deleted!");
+        }
+        else {
+            toastMessage("Oops sorry there is an issue.");
+        }
+    }*/
 
     private void toastMessage(String message)
     {

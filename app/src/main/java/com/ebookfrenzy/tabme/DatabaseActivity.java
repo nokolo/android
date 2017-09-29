@@ -53,6 +53,16 @@ public class DatabaseActivity extends SQLiteOpenHelper
         else
             return true;
     }
+   /* public boolean deleteData(String item)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.remove(item);
+
+        Log.d(TAG, "delData: Removing " + item + " from " + TABLE_NAME);
+
+
+    }*/
 
     public Cursor getData()
     {

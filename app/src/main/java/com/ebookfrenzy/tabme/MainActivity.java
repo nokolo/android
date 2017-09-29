@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 validate(Name.getText().toString(), Password.getText().toString());
-                EditText a = (EditText)findViewById(R.id.etName);
+              /*  EditText a = (EditText)findViewById(R.id.etName);
                 String mob = a.getText().toString();
                 EditText b = (EditText)findViewById(R.id.etPassword);
                 String pw = b.getText().toString();
@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Toast val = Toast.makeText(MainActivity.this, "Data don't match!" , Toast.LENGTH_SHORT);
                     val.show();
-                }
+                }*/
 
             }
         });

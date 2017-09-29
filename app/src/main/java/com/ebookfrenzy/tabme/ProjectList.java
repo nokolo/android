@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -49,7 +50,7 @@ public class ProjectList extends AppCompatActivity implements View.OnClickListen
         //append data to list
 
             Cursor cursor = mDatabaseActivity.getData();
-                ArrayList<String> listData = new ArrayList<>();
+                final ArrayList<String> listData = new ArrayList<>();
 
                 int numResults = cursor.getCount();
                 Log.d(TAG, "Cursor items count - " + numResults);
@@ -76,6 +77,29 @@ public class ProjectList extends AppCompatActivity implements View.OnClickListen
 
                 }
 
+            }
+        });
+        //This is to delete a listView item
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                SparseBooleanArray positionChecker = mListView.getCheckedItemPositions();
+                int count = mListView.getCount();
+
+                for(int item = count-1; item >= 0; item--)
+                {
+                    if(positionChecker.get(item))
+                    {
+                        adapter.remove(listData.get(item));
+                        Toast.makeText(ProjectList.this ,"Child Info has been removed", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                positionChecker.clear();
+                adapter.notifyDataSetChanged();
+
+                return false;
             }
         });
 
