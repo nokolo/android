@@ -37,4 +37,8 @@
     <string name="password">Password</string>
     <string name="sign_up">Sign Up</string>
     <string name="delete">Delete</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="click_to_see_map">Click to see map</string>
+    <string name="tab1_location_text">Tab1 location text</string>
+    <string name="click_to_load_contact_list">Click to load contact List</string>
 </resources>

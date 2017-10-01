@@ -134,4 +134,10 @@ public class ProjectList extends AppCompatActivity implements View.OnClickListen
         }*/
     }
 
+    public void onclickDel(View v)
+    {
+
+    }
+
+
 }

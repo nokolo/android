@@ -2,46 +2,39 @@ package com.ebookfrenzy.tabme;
 
 import android.content.ContentResolver;
 import android.database.Cursor;
-import android.os.Bundle;
 import android.provider.ContactsContract;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.StringBuilderPrinter;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-/**
- * Created by Owner-PC on 9/16/2017.
- */
-
-public class Tab2contacts extends Fragment {
+public class ContactLogActivity extends AppCompatActivity {
 
     private Button loadContacts;
     private TextView listContacts;
 
-    public Tab2contacts() {
-    }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.tab2contacts, container, false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_contact_log);
 
-        listContacts = (TextView)rootView.findViewById(R.id.section_label);
-        loadContacts = (Button)rootView.findViewById(R.id.btn_contacts_list);
+        listContacts = (TextView) findViewById(R.id.listContacts);
+        loadContacts = (Button) findViewById(R.id.btn_contacts_list);
+
         loadContacts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LoadContacts();
             }
         });
-        return rootView;
     }
     private void LoadContacts()
     {
         StringBuilder builder = new StringBuilder();
-        ContentResolver contentResolver = getActivity().getApplicationContext().getContentResolver();
+        ContentResolver contentResolver = getContentResolver();
         Cursor cursor = contentResolver.query(ContactsContract.Contacts.CONTENT_URI,null,null,null,null);
 
         if(cursor.getCount() > 0)
