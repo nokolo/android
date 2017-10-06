@@ -7,7 +7,7 @@
     tools:context="com.ebookfrenzy.tabme.RegisterActivity">
 
     <EditText
-        android:id="@+id/name"
+        android:id="@+id/regname"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -27,7 +27,7 @@
         app:layout_constraintVertical_bias="0.053" />
 
     <EditText
-        android:id="@+id/mobile"
+        android:id="@+id/regmobile"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="374dp"

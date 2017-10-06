@@ -23,7 +23,7 @@ public class RegisterChildActivity extends AppCompatActivity {
         //delData = (Button) findViewById(R.id.delData);
         name = (EditText) findViewById(R.id.childname);
         age = (EditText) findViewById(R.id.age);
-        mobile = (EditText) findViewById(R.id.mobile);
+        mobile = (EditText) findViewById(R.id.childmobile);
         btnViewData = (Button) findViewById(R.id.viewdata);
         myDBHandler = new DatabaseActivity(this);
 

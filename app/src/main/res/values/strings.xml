@@ -41,4 +41,8 @@
     <string name="click_to_see_map">Click to see map</string>
     <string name="tab1_location_text">Tab1 location text</string>
     <string name="click_to_load_contact_list">Click to load contact List</string>
+    <string name="click_to_see_call_log">Click to see call log</string>
+    <string name="facebook_app_id">119699395375207</string>
+    <string name="fb_login_protocol_scheme">fb119699395375207</string>
+
 </resources>

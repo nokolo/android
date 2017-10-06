@@ -1,5 +1,7 @@
 package com.ebookfrenzy.tabme;
 
+
+
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -24,7 +26,7 @@ import android.util.Log;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     UiSettings mapSettings;
-    // mapSettings = mMap.getUISettings();
+     //mapSettings = mMap.getUISettings();
 
     private static final int LOCATION_REQUEST_CODE = 101;
     private String TAG = "Map";
