@@ -1,13 +1,8 @@
 package com.ebookfrenzy.tabme;
 
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,25 +12,20 @@ import android.widget.Toast;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
-import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 
 public class MainActivity extends AppCompatActivity {
 
     DatabaseHelper helper = new DatabaseHelper(this);
 
-    private EditText Name, Password;
+    private EditText Mobile, Password;
     private TextView Info;
     private Button Login;
     private Button SignUp;
@@ -48,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Name = (EditText)findViewById(R.id.etName);
+        Mobile = (EditText)findViewById(R.id.etMobile);
         Password = (EditText)findViewById(R.id.etPassword);
         Info = (TextView)findViewById(R.id.tvInfo);
         Login = (Button)findViewById(R.id.btnLogin);
@@ -90,25 +80,18 @@ public class MainActivity extends AppCompatActivity {
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validate(Name.getText().toString(), Password.getText().toString());
-              /*  EditText a = (EditText)findViewById(R.id.etName);
-                String mob = a.getText().toString();
-                EditText b = (EditText)findViewById(R.id.etPassword);
-                String pw = b.getText().toString();
+            validate(Mobile.getText().toString(), Password.getText().toString());
+            String mobile = Mobile.getText().toString();
+            String passwprd = Password.getText().toString();
 
-                String pword = helper.searchPass(mob);
-
-                if(pw.equals(pword))
-                {
-                    Intent intent = new Intent(MainActivity.this, ProjectList.class);
-                    intent.putExtra("User", mob);
-                    startActivity(intent);
-                }
-                else
-                {
-                    Toast val = Toast.makeText(MainActivity.this, "Data don't match!" , Toast.LENGTH_SHORT);
-                    val.show();
-                }*/
+            String retreivedPassword = helper.searchPass(mobile);
+            if(retreivedPassword != null && retreivedPassword.equals(passwprd)) {
+                Intent intent = new Intent(MainActivity.this, ProjectList.class);
+                intent.putExtra("User", mobile);
+                startActivity(intent);
+            } else {
+                Toast.makeText(MainActivity.this, "Data don't match!" , Toast.LENGTH_SHORT).show();
+            }
 
             }
         });
