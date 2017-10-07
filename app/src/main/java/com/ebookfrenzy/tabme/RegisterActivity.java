@@ -27,55 +27,30 @@ public class RegisterActivity extends AppCompatActivity {
         openHelper=new DatabaseHelper(this);
         _btnreg = (Button)(findViewById(R.id.btnSubmit));
 
-       /* _txtname = (EditText)findViewById(R.id.childname);
-        _txtpassword = (EditText)findViewById(R.id.txtpass);
-        _txtmobile = (EditText)findViewById(R.id.age);*/
+        _txtname = (EditText)findViewById(R.id.regname);
+        _txtpassword = (EditText)findViewById(R.id.txtconfirm);
+        _txtconfirm = (EditText)findViewById(R.id.txtpass);
+        _txtmobile = (EditText)findViewById(R.id.regmobile);
 
-       _btnreg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                db= openHelper.getWritableDatabase();
-
-                String name = _txtname.getText().toString();
-                String mobile = _txtmobile.getText().toString();
-                String pass = _txtpassword.getText().toString();
-                String pass2 =_txtconfirm.getText().toString();
-
-
-            }
-        });
-    }
-    public void onSignUpClick(View v)
-    {
         _btnreg.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v)
-            {
-                _txtconfirm = (EditText) findViewById(R.id.txtconfirm);
-                _txtname = (EditText) findViewById(R.id.childname);
-                _txtpassword = (EditText) findViewById(R.id.txtpass);
-                _txtmobile = (EditText) findViewById(R.id.age);
+            public void onClick(View v) {
                 String name = _txtname.getText().toString();
                 String mobile = _txtmobile.getText().toString();
                 String pass = _txtpassword.getText().toString();
                 String pass2 =_txtconfirm.getText().toString();
 
-                if (!pass.equals(pass2))
-                {
+                if (!pass.equals(pass2)) {
                     Toast passValue = Toast.makeText(RegisterActivity.this, "Passwords don't match!" , Toast.LENGTH_SHORT);
                     passValue.show();
-                }
-                else
-                {
+                } else {
                     //insert details in database
                     Contacts c = new Contacts();
                     c.setName(name);
                     c.setMobile(mobile);
                     c.setPassword(pass);
-
                     helper.insertContact(c);
                 }
-
             };
         });
     }

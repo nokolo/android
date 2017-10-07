@@ -47,27 +47,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public String searchPass(String uname)
+    public String searchPass(String mobile)
     {
         db = this.getReadableDatabase();
-        String query = "SELECT * FROM "+ TABLE_NAME;
+        String query = "SELECT " + COL_4  + " FROM "+ TABLE_NAME + " WHERE " + COL_3 + "='" + mobile + "';";
         Cursor cursor = db.rawQuery(query, null);
-        String a,b;
-        b = "No location";
-        if(cursor.moveToFirst())
-        {
-            do{
-                a = cursor.getString(1);
-
-                if(a.equals(uname))
-                {
-                    b = cursor.getString(2);
-                    break;
-                }
-            }while(cursor.moveToNext());
-
+        String retreivedPassword = null;
+        Log.d(TAG, " Cursor - " + cursor);
+        if(cursor.moveToFirst()) {
+            retreivedPassword = cursor.getString(cursor.getColumnIndex(COL_4));
         }
-        return b;
+        return retreivedPassword;
     }
 
     @Override
